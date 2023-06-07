@@ -52,5 +52,6 @@ Mkfile.old
 dkms.conf
 
 #Section 2
-/section2/datalab-handout/*.*
-/section2/datalab-handout/*
+/section2/lab/*.*
+/section2/lab/*
+!/section2/lab/lab.c
