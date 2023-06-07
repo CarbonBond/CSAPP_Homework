@@ -142,8 +142,19 @@ NOTES:
  *   Max ops: 14
  *   Rating: 1
  */
+
+/* Example Usage of my algorithm
+ *  x <- 1010
+ *  y <- 1100
+ * ~x <- 0101
+ * ~y <- 0011
+ * x' <- 0100 = ~x & y
+ * y' <- 0010 = x & ~y
+ * r  <- 1001 = ~(x') & ~(y') 
+ * r' <- 0110 = ~r
+ */
 int bitXor(int x, int y) {
-  return 2;
+  return ~(~(~x & y) & ~(x & ~y));
 }
 /* 
  * tmin - return minimum two's complement integer 
