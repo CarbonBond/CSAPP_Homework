@@ -1,6 +1,13 @@
 #include <stdio.h>
 #include <stdint.h>
 
+/*
+ * EXTRA RULES
+ * 
+ * Forbidden:
+ *  - Right Shift
+ *  - Division
+ */
 
 unsigned srl(unsigned x, int k) {
   /* Perform shift arithmetically */
@@ -12,7 +19,7 @@ unsigned srl(unsigned x, int k) {
   unsigned significantBits = dataSize - k;
   
   //Set the highest important bit
-  unsigned singleBitSet = 1 << significantBits - 1;
+  unsigned singleBitSet = 1 << (significantBits - 1);
   
   //Set the remanding zeros to create mask
   unsigned bitMask = singleBitSet | ( singleBitSet - 1 );
@@ -31,7 +38,7 @@ int sra(int x, int k) {
   unsigned significantBits = dataSize - k;
   
   //Set the highest important bit, which is also sign bit location
-  unsigned singleBitSet = 1 << significantBits - 1;
+  unsigned singleBitSet = 1 << (significantBits - 1);
 
   //Gets if sign bit is set
   unsigned signBitLocation = xsra & singleBitSet;
@@ -57,5 +64,5 @@ int sra(int x, int k) {
 
 int main() {
   printf("\n Result: %X\n", sra(0x12345678, 12));
-  printf("\n Result: %X\n", sra(0xF7654321, 16));
+  printf("\n Result: %X\n", sra(0xD7654321, 16));
 }
